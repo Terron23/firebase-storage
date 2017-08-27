@@ -1,0 +1,11 @@
+body {
+    background: linear-gradient(to right, rgb(28, 146, 210), rgb(242, 252, 254));
+}
+
+#reveal {
+    display:none;
+}
+
+textarea{
+    border: 5px black solid
+}
