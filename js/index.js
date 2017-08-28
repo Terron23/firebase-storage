@@ -9,19 +9,73 @@
     storageBucket: "login-798ee.appspot.com",
     messagingSenderId: "837937485461"
   };
+
   const hide = {
     email: '',
     password: ''
   }
+  
   firebase.initializeApp(config);
+
    
    firebase.auth().onAuthStateChanged(function(user) {
-    alert("You can now begin Sending Messages");
+    ///.
+    alert(user.email)
    $("#hideMe").addClass("hidden");
- $( "#reveal" ).fadeIn( "slow", function() {
+   $(".create").addClass("hidden");
+ $( "#reveal" ).fadeIn( "fast", function() {
     // Animation complete
   });
-  });
+  $("#logout").removeClass("hidden");
+});
+
+$("#forgot").click(()=>{
+ 
+   function sendPasswordReset() {
+      var email = document.getElementById('email').value;
+      if(email.length < 1) {
+        var t = prompt('Whats your email?')
+        email = t
+      }
+      // [START sendpasswordemail]
+      firebase.auth().sendPasswordResetEmail(email).then(function() {
+        // Password Reset Email Sent!
+        // [START_EXCLUDE]
+        alert('Password Reset Email Sent!');
+        // [END_EXCLUDE]
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/invalid-email') {
+          alert(errorMessage);
+        } else if (errorCode == 'auth/user-not-found') {
+          alert(errorMessage);
+        }
+        console.log(error);
+        
+        // [END_EXCLUDE]
+      });
+      // [END sendpasswordemail];
+    }
+    sendPasswordReset()
+});
+
+$("#logout").click(()=>{
+ var t = confirm("Are you sure you want to Log out")
+ if(t === false) {
+   return false;
+ } 
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+
+  location.href = "signup.html"
+
+}, function(error) {
+  // An error happened.
+});
+})
   
 $("#submit").click((event)=>{
 event.preventDefault();
@@ -44,9 +98,15 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     phone,
 
  })
+   if(message.length > 0) {
+     $("#message").val(' '); 
+     alert("Message Sent Successfully");
+     
+   }
+ 
 }).catch(function(error){
-  alert(error)
-   $("#email").append("<span style='color:red'>"+error+"</span>");
+  alert(error + ' ' + '')
+   //$("#email").append("<span style='color:red'>"+error+"</span>");
     console.log(error);
 })
 return false;

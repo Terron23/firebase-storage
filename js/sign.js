@@ -9,6 +9,7 @@ $(document).ready(function(){
     messagingSenderId: "837937485461"
   };
   firebase.initializeApp(config);
+  
          function sendEmailVerification() {
       // [START sendemailverification]
       firebase.auth().currentUser.sendEmailVerification().then(function() {
