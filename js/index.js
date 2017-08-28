@@ -24,7 +24,7 @@
    $("#hideMe").addClass("hidden");
    $(".create").addClass("hidden");
  $( "#reveal" ).fadeIn( "fast", function() {
-    // Animation complete
+   
   });
   $("#logout").removeClass("hidden");
 });
@@ -110,6 +110,6 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     console.log(error);
 })
 return false;
-})
+});
 
   });
