@@ -1,0 +1,22 @@
+{
+  "name": "rs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "deploy": "^1.0.3",
+    "firebase": "^4.3.0",
+    "firebase-admin": "^5.2.1",
+    "firebase-functions": "^0.6.2",
+    "init": "^0.1.2",
+    "jQuery": "^1.7.4",
+    "node-mailer": "^0.1.1",
+    "nodemailer-direct-transport": "^3.3.2"
+  }
+}
